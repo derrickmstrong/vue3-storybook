@@ -6,7 +6,7 @@ export default {
   component: PureTaskList,
   title: 'PureTaskList',
   tags: ['autodocs'],
-  decorators: [() => ({ template: '<div style="margin: 1em;"><story/></div>' })],
+  decorators: [() => ({ template: '<div style="margin: 3em;"><story/></div>' })],
   argTypes: {
     onPinTask: {},
     onArchiveTask: {}
