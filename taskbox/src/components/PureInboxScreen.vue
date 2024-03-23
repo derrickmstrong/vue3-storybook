@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import TaskList from './TaskList.vue';
+import TaskList from './TaskList.vue'
 export default {
   name: 'PureInboxScreen',
   components: { TaskList },
   props: {
-    error: { type: Boolean, default: false },
-  },
-};
+    error: { type: Boolean, default: false }
+  }
+}
 </script>

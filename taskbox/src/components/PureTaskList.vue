@@ -3,9 +3,7 @@
     <template v-if="loading">
       <div v-for="n in 6" :key="n" class="loading-item">
         <span class="glow-checkbox" />
-        <span class="glow-text">
-          <span>Loading</span> <span>cool</span> <span>state</span>
-        </span>
+        <span class="glow-text"> <span>Loading</span> <span>cool</span> <span>state</span> </span>
       </div>
     </template>
 
@@ -29,41 +27,41 @@
   </div>
 </template>
 <script>
-import Task from './Task.vue';
-import { reactive, computed } from 'vue';
+import Task from './Task.vue'
+import { reactive, computed } from 'vue'
 
 export default {
   name: 'PureTaskList',
   components: { Task },
   props: {
     tasks: { type: Array, required: true, default: () => [] },
-    loading: { type: Boolean, default: false },
+    loading: { type: Boolean, default: false }
   },
   emits: ['archive-task', 'pin-task'],
 
   setup(props, { emit }) {
-    props = reactive(props);
+    props = reactive(props)
     return {
       isEmpty: computed(() => props.tasks.length === 0),
       tasksInOrder: computed(() => {
         return [
           ...props.tasks.filter((t) => t.state === 'TASK_PINNED'),
-          ...props.tasks.filter((t) => t.state !== 'TASK_PINNED'),
-        ];
+          ...props.tasks.filter((t) => t.state !== 'TASK_PINNED')
+        ]
       }),
       /**
        * Event handler for archiving tasks
        */
       onArchiveTask(taskId) {
-        emit('archive-task', taskId);
+        emit('archive-task', taskId)
       },
       /**
        * Event handler for pinning tasks
        */
       onPinTask(taskId) {
-        emit('pin-task', taskId);
-      },
-    };
-  },
-};
+        emit('pin-task', taskId)
+      }
+    }
+  }
+}
 </script>

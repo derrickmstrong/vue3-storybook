@@ -1,5 +1,5 @@
 <script setup>
-import InboxScreen from './components/InboxScreen.vue';
+import InboxScreen from './components/InboxScreen.vue'
 </script>
 
 <template>

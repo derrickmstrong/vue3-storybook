@@ -1,10 +1,6 @@
 <template>
   <div :class="classes">
-    <label
-      :for="'checked' + task.id"
-      :aria-label="'archiveTask-' + task.id"
-      class="checkbox"
-    >
+    <label :for="'checked' + task.id" :aria-label="'archiveTask-' + task.id" class="checkbox">
       <input
         type="checkbox"
         :checked="isChecked"
@@ -14,11 +10,7 @@
       />
       <span class="checkbox-custom" @click="archiveTask" />
     </label>
-    <label 
-      :for="'title-' + task.id" 
-      :aria-label="task.title" 
-      class="title"
-    >
+    <label :for="'title-' + task.id" :aria-label="task.title" class="title">
       <input
         type="text"
         readonly
@@ -41,7 +33,7 @@
 </template>
 
 <script>
-import { reactive, computed } from 'vue';
+import { reactive, computed } from 'vue'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -51,18 +43,18 @@ export default {
       type: Object,
       required: true,
       default: () => ({ id: '', state: '', title: '' }),
-      validator: task => ['id', 'state', 'title'].every(key => key in task),
-    },
+      validator: (task) => ['id', 'state', 'title'].every((key) => key in task)
+    }
   },
   emits: ['archive-task', 'pin-task'],
 
   setup(props, { emit }) {
-    props = reactive(props);
+    props = reactive(props)
     return {
       classes: computed(() => ({
         'list-item TASK_INBOX': props.task.state === 'TASK_INBOX',
         'list-item TASK_PINNED': props.task.state === 'TASK_PINNED',
-        'list-item TASK_ARCHIVED': props.task.state === 'TASK_ARCHIVED',
+        'list-item TASK_ARCHIVED': props.task.state === 'TASK_ARCHIVED'
       })),
       /**
        * Computed property for checking the state of the task
@@ -72,15 +64,15 @@ export default {
        * Event handler for archiving tasks
        */
       archiveTask() {
-        emit('archive-task', props.task.id);
+        emit('archive-task', props.task.id)
       },
       /**
        * Event handler for pinning tasks
        */
       pinTask() {
-        emit('pin-task', props.task.id);
-      },
-    };
-  },
-};
+        emit('pin-task', props.task.id)
+      }
+    }
+  }
+}
 </script>
